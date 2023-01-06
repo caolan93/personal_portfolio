@@ -1,0 +1,98 @@
+@import "../../index.scss";
+
+@media only screen and (max-width: 1024px) {
+  .navbar-container {
+    flex: 1 1 100%;
+    background: rgba(217, 217, 217, 0.1);
+    .title-container {
+      padding-right: 20px;
+      padding-left: 20px;
+      height: 80px;
+      flex: 1;
+      align-items: center;
+      justify-content: space-between;
+      h1 {
+        color: $green;
+      }
+
+      button {
+        .hamburger-menu {
+          height: 20px;
+          width: 30px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          .line-top,
+          .line-mid,
+          .line-btm,
+          .line-close-top,
+          .line-close-btm {
+            position: absolute;
+            height: 2px;
+            background-color: $green;
+            width: 100%;
+            opacity: 1;
+            transition: all ease 300ms;
+          }
+          .line-top {
+            top: 0;
+          }
+          .line-btm {
+            bottom: 0;
+          }
+
+          .line-mid,
+          .line-close-top,
+          .line-close-btm {
+            top: 50%;
+            transform: translateY(-50%);
+          }
+        }
+
+        .hamburger-menu.open {
+          .line-top,
+          .line-mid,
+          .line-btm {
+            opacity: 0;
+            transition: all ease 300ms;
+          }
+          .line-close-top {
+            transform: rotate(45deg);
+          }
+          .line-close-btm {
+            transform: rotate(-45deg);
+          }
+        }
+      }
+    }
+
+    .navbar-list {
+      position: absolute;
+      width: 100%;
+      top: 80px;
+      height: calc(100% - 80px);
+      background: rgba(217, 217, 217, 0.1);
+      left: -100%;
+      transition: all ease 300ms;
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        list-style: none;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        li {
+          font-size: 20px;
+          text-align: center;
+        }
+      }
+    }
+    .navbar-list.open {
+      left: 0%;
+      transition: all ease 300ms;
+    }
+  }
+}
