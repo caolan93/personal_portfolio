@@ -13,14 +13,14 @@ const Footer = () => {
       <div className="footer-container">
         <a href="https://github.com/caolan93" target="_blank">
           <img src={github} alt="Github logo icon" />
-          Github
+          <p>Github</p>
         </a>
         <a
           href="https://www.linkedin.com/in/caolan-fanning-1a7229157/"
           target="_blank"
         >
           <img src={linkedIn} alt="LinkedIn logo icon" />
-          LinkedIn
+          <p>LinkedIn</p>
         </a>
         <p>All Rights Reserved &copy;</p>
       </div>

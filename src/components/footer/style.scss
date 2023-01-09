@@ -14,6 +14,27 @@
     a {
       display: flex;
       align-items: center;
+
+      p {
+        position: relative;
+        &:after {
+          position: absolute;
+          content: "";
+          width: 0%;
+          bottom: -2px;
+          height: 2px;
+          left: 0;
+          background: #fff;
+          transition: all 0.3s ease;
+        }
+        &:hover {
+          &:after {
+            transition: all 0.3s ease;
+            width: 100%;
+          }
+        }
+      }
+
       img {
         margin-right: 10px;
         height: 20px;

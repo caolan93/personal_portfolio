@@ -1,5 +1,8 @@
 import { useState } from "react";
+
+// Global Components
 import Navbar from "./components/navbar/navbar";
+import Footer from "./components/footer/footer";
 
 import { Route, Routes } from "react-router-dom";
 
