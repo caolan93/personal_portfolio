@@ -1,11 +1,16 @@
 import React from "react";
 
-import Contact from "../components/contact/contact";
+// Style
+import "./style.scss";
+
+import Contact from "../../components/contact/contact";
+import Hero from "../../components/hero/hero";
 
 const Home = () => {
   return (
     <div className="home-container-container">
       <div className="home-container">
+        <Hero />
         <Contact />
       </div>
     </div>
