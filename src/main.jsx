@@ -4,8 +4,8 @@ import App from "./App";
 import "./index.scss";
 
 // Redux
-import { Provider } from "react-redux";
 import store from "./store";
+import { Provider } from "react-redux";
 
 // React Router DOM
 import { BrowserRouter } from "react-router-dom";

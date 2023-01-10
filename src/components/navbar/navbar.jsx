@@ -1,24 +1,30 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 //React router DOM
 import { NavLink } from "react-router-dom";
 
-//Style
+// Style
 import "./style.scss";
 
-const Navbar = () => {
-  const [toggle, setToggle] = useState(false);
+// Action
+import { toggleMobileMenu } from "../../actions/utility";
 
-  const handleToggle = () => {
-    setToggle(!toggle);
-  };
+const Navbar = () => {
+  const toggle = useSelector((state) => state?.mobileMenu?.mobileMenu);
+  const dispatch = useDispatch();
+
+  console.log("Test toggle", toggle);
 
   const location = useLocation();
 
   const navigateTo = () => {
     window?.scrollTo(0, 0);
-    setToggle(false);
+  };
+
+  const handleToggle = (data) => {
+    dispatch(toggleMobileMenu(!data));
   };
 
   return (
@@ -26,7 +32,7 @@ const Navbar = () => {
       <div className="navbar-container">
         <div className="title-container">
           <h1>Caolan Fanning Web Dev</h1>
-          <button onClick={handleToggle}>
+          <button onClick={() => handleToggle(toggle)}>
             <div className={`hamburger-menu ${toggle && "open"}`}>
               <div className="line-top" />
               <div className="line-close-top" />
