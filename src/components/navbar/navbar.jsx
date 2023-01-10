@@ -16,8 +16,6 @@ const Navbar = () => {
 
   const location = useLocation();
 
-  console.log("Location", location);
-
   const navigateTo = () => {
     window?.scrollTo(0, 0);
     setToggle(false);
