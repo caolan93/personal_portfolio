@@ -4,13 +4,9 @@ import { Field, reduxForm } from "redux-form";
 const Contact = () => {
   return (
     <div className="contact-container">
-      <form>
-        <Field name="Name" component="input" type="text" placeholder="Name" />
-      </form>
+      <form></form>
     </div>
   );
 };
 
-export default reduxForm({
-  form: "contactForm",
-})(Contact);
+export default Contact;
