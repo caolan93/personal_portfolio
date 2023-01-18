@@ -5,8 +5,17 @@
   display: flex;
   justify-content: center;
   .home-container {
+    padding: 0 clamp(50px, 7.6%, 150px);
     flex: 1 1 100%;
     max-width: 1920px;
     justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .home-container-container {
+    .home-container {
+      padding: 0 20px;
+    }
   }
 }
