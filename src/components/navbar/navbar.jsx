@@ -31,7 +31,7 @@ const Navbar = () => {
     <div className="navbar-container-container">
       <div className="navbar-container">
         <div className="title-container">
-          <h1>Caolan Fanning Web Dev</h1>
+          <h1>CFWebDev</h1>
           <button onClick={() => handleToggle(toggle)}>
             <div className={`hamburger-menu ${toggle && "open"}`}>
               <div className="line-top" />

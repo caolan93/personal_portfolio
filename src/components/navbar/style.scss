@@ -2,8 +2,11 @@
 
 .navbar-container-container {
   flex: 1 1 100%;
-  background: rgba(217, 217, 217, 0.1);
+  background: #1f2c3a;
   justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   .navbar-container {
     max-width: 1920px;
     flex: 1 1 100%;
@@ -33,12 +36,13 @@
       left: 0;
       transition: none;
       ul {
+        background-color: #1f2c3a;
         display: flex;
         flex-direction: row;
         gap: 50px;
         list-style: none;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
         width: 100%;
         height: 100%;
         a {
@@ -145,11 +149,11 @@
         position: absolute;
         width: 100%;
         top: 80px;
-        height: calc(100% - 80px);
-        background: $blue;
+        height: calc(100vh - 80px);
+        background: #1f2c3a;
         z-index: 1000;
         left: -100%;
-        transition: all ease 300ms;
+        transition: all ease 600ms;
         ul {
           display: flex;
           flex-direction: column;
@@ -167,7 +171,7 @@
       }
       .navbar-list.open {
         left: 0%;
-        transition: all ease 300ms;
+        transition: all ease 600ms;
       }
     }
   }
