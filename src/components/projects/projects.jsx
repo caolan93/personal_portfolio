@@ -1,7 +1,14 @@
 import React from "react";
+import ProjectCard from "../cards/projectCard/projectCard";
 
 // Style
 import "./style.scss";
+
+// Assets
+import { projectContent } from "../../assets/projectContent";
+
+// Components
+import { Carousel } from "react-responsive-carousel";
 
 const Projects = () => {
   return (
@@ -23,7 +30,14 @@ const Projects = () => {
         </p>
 
         <div className="project-cards-carousel">
-            
+          {projectContent.map((content, index) => (
+            <ProjectCard
+              key={index}
+              title={content?.title}
+              image={content?.image}
+              description={content?.description}
+            />
+          ))}
         </div>
       </div>
     </div>
