@@ -6,6 +6,7 @@ import "./style.scss";
 import Contact from "../../components/contact/contact";
 import Hero from "../../components/hero/hero";
 import Technologies from "../../components/technologies/technologies";
+import Projects from "../../components/projects/projects";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <div className="home-container">
         <Hero />
         <Technologies />
+        <Projects />
         <Contact />
       </div>
     </div>
