@@ -29,9 +29,6 @@
     }
   }
 
-  .right-container {
-  }
-
   .left-container {
     .technology-icons {
       display: grid;
@@ -43,6 +40,31 @@
       img {
         height: 50px;
         width: 50px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .technologies-container {
+    flex: 1 1 100%;
+    padding-bottom: 50px;
+    .title-container {
+      margin-bottom: 20px;
+    }
+
+    .left-container {
+      margin-bottom: 30px;
+    }
+
+    .left-container,
+    .right-container {
+      flex: 1 1 100%;
+    }
+    .right-container {
+      .text-information {
+        max-width: 500px;
+        text-align: center;
       }
     }
   }
