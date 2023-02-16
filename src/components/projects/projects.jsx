@@ -8,7 +8,6 @@ import "./style.scss";
 import { projectContent } from "../../assets/projectContent";
 
 // Components
-import { Carousel } from "react-responsive-carousel";
 
 const Projects = () => {
   return (
