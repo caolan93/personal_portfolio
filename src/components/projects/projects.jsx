@@ -35,6 +35,7 @@ const Projects = () => {
               title={content?.title}
               image={content?.image}
               description={content?.description}
+              link={content?.link}
             />
           ))}
         </div>
