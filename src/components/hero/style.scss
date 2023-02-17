@@ -43,12 +43,21 @@
     .picture-container {
       flex: 1 1 100%;
       justify-content: center;
-      max-width: 500px;
+      max-width: 450px;
       .picture {
         background: $gray;
         height: 500px;
         width: 400px;
         border-radius: 20px;
+        overflow: hidden;
+        img {
+          object-position: top;
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          // -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+          // filter: grayscale(100%);
+        }
       }
     }
   }

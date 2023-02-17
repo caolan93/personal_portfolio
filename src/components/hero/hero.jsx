@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-// Components
+// Assets
+import caolan from "../../assets/caolan.jpg";
 import { Wave } from "../wave/wave";
 
 // Style
@@ -43,7 +44,9 @@ const Hero = () => {
       </div>
       <div className="image-container">
         <div className="picture-container">
-          <div className="picture"></div>
+          <div className="picture">
+            <img src={caolan} alt="A picture of me" />
+          </div>
         </div>
       </div>
     </div>
