@@ -3,6 +3,7 @@ import React, { useState } from "react";
 // Installs
 import ClipLoader from "react-spinners/ClipLoader";
 import { Formik } from "formik";
+import Swal from "sweetalert2";
 
 // Assets
 import linkedIn from "../../assets/icons/linkedIn.png";
@@ -13,11 +14,30 @@ import phone from "../../assets/icons/phone.png";
 // Style
 import "./style.scss";
 
+// Actions
+import { createContact } from "../../actions/contact";
+import { useDispatch } from "react-redux";
+
 const Contact = () => {
   let [loading, setLoading] = useState(true);
+  let [isSubmitting, setIsSubmitting] = useState(false);
+
+  const dispatch = useDispatch();
 
   const override = {
     margin: "0 auto",
+  };
+
+  const onSubmit = (data) => {
+    dispatch(createContact(data))
+      .then((res) => {
+        setLoading(false);
+        Swal.fire("Success!", res.message, "success");
+      })
+      .catch((error) => {
+        setLoading(false);
+        Swal.fire("Error", error, "error");
+      });
   };
 
   return (
@@ -30,25 +50,25 @@ const Contact = () => {
           <a href="tel:+353841779545">
             <div className="contact-info">
               <img src={phone} alt="A Phone Icon Image" />
-              <h4>+ (353) 83 177 9545</h4>
+              <h5>+ (353) 83 177 9545</h5>
             </div>
           </a>
           <a href="mailto:caolan.fanning@gmail.com">
             <div className="contact-info">
               <img src={mail} alt="A Mail Icon Image" />
-              <h4>caolan.fanning@gmail.com</h4>
+              <h5>caolan.fanning@gmail.com</h5>
             </div>
           </a>
           <a href="https://www.linkedin.com/in/caolan-fanning-1a7229157/">
             <div className="contact-info">
               <img src={linkedIn} alt="A LinkedIn Icon Image" />
-              <h4>View LinkedIn Profile</h4>
+              <h5>View LinkedIn Profile</h5>
             </div>
           </a>
           <a href="https://github.com/caolan93">
             <div className="contact-info">
               <img src={github} alt="A GitHub Icon Image" />
-              <h4>View GitHub Profile</h4>
+              <h5>View GitHub Profile</h5>
             </div>
           </a>
         </div>
@@ -61,17 +81,26 @@ const Contact = () => {
           initialValues={{ name: "", phone: "", email: "", message: "" }}
           validate={(values) => {
             const errors = {};
-            if (!values.email) {
+            if (
+              !values.email ||
+              !values.message ||
+              !values.phone ||
+              !values.name
+            ) {
+              errors.name = "Required";
+              errors.phone = "Required";
               errors.email = "Required";
+              errors.message = "Required";
+              return errors;
             } else if (
               !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
             ) {
               errors.email = "Invalid email address";
+              return errors;
             }
-            return errors;
           }}
           onSubmit={(data) => {
-            console.log(data);
+            onSubmit(data);
           }}
         >
           {({
@@ -81,7 +110,6 @@ const Contact = () => {
             handleChange,
             handleBlur,
             handleSubmit,
-            isSubmitting,
           }) => (
             <form onSubmit={handleSubmit}>
               {isSubmitting ? (
@@ -111,18 +139,24 @@ const Contact = () => {
                     onBlur={handleBlur}
                     value={values.name}
                   />
-                  <p style={{ color: "white" }}>
-                    {errors.name && touched.name && errors.name}
-                  </p>
+                  {errors.name && (
+                    <p style={{ color: "white" }}>
+                      {errors.name && touched.name && errors.name}
+                    </p>
+                  )}
                   <input
-                    type="text"
+                    type="tel"
                     name="phone"
                     placeholder="Phone"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.phone}
                   />
-                  {errors.phone && touched.phone && errors.phone}
+                  {errors.phone && (
+                    <p style={{ color: "white" }}>
+                      {errors.phone && touched.phone && errors.phone}
+                    </p>
+                  )}
                   <input
                     type="email"
                     name="email"
@@ -131,9 +165,12 @@ const Contact = () => {
                     onBlur={handleBlur}
                     value={values.email}
                   />
-                  <p style={{ color: "white" }}>
-                    {errors.email && touched.email && errors.email}
-                  </p>
+                  {errors.email && (
+                    <p style={{ color: "white" }}>
+                      {errors.email && touched.email && errors.email}
+                    </p>
+                  )}
+
                   <textarea
                     type="text"
                     name="message"
@@ -143,8 +180,13 @@ const Contact = () => {
                     onBlur={handleBlur}
                     value={values.message}
                   />
-                  {errors.message && touched.message && errors.message}
-                  <button type="submit" disabled={isSubmitting}>
+                  {errors.message && (
+                    <p style={{ color: "white" }}>
+                      {errors.message && touched.message && errors.message}
+                    </p>
+                  )}
+
+                  <button type="submit" disabled={loading}>
                     Submit
                   </button>
                 </>
