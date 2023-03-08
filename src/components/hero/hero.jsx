@@ -14,22 +14,15 @@ const Hero = () => {
     setWidth(true);
   }, []);
 
+  const handleWave = () => <Wave />;
+
+  const waveDelay = () => {
+    setTimeout(() => <Wave />, 5000);
+  };
+
   return (
     <div className="hero-container">
-      {/* <svg
-        width="1926"
-        height="475"
-        viewBox="0 0 1926 475"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          id="Vector 2"
-          d="M1 79.9995C776 1151 1050 -346.5 1925 79.9995"
-          stroke="#BFA181"
-        />
-      </svg> */}
-
+      {window.innerWidth > 1024 && <Wave />}
       <div className="welcome-container">
         <div className="title-container">
           <h1>WELCOME TO MY PERSONAL WEBSITE PORTFOLIO</h1>
